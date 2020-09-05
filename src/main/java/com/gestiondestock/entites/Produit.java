@@ -3,13 +3,16 @@ package com.gestiondestock.entites;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,17 +33,13 @@ public class Produit {
 	private Date dateProduit ;
 	
 	
-	@OneToMany(mappedBy = "produit", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("produit")
-    private List<Categorie> categories = new ArrayList<Categorie>();
+	@ManyToOne
+    @JoinColumn(name = "categorieId",referencedColumnName = "id")
+	private Categorie categorie;
 	
 	
-	public List<Categorie> getCategories() {
-		return categories;
-	}
-	public void setCategories(List<Categorie> categories) {
-		this.categories = categories;
-	}
+	@OneToMany(mappedBy = "produits", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private List<Fournisseur>fournisseurs ;
 	public Long getId() {
 		return id;
 	}
@@ -111,6 +110,13 @@ public class Produit {
 	
 	
 	
+	
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 	public Produit() {
 		super();
 		// TODO Auto-generated constructor stub
