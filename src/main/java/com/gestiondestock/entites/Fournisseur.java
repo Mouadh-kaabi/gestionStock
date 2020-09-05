@@ -29,9 +29,9 @@ public class Fournisseur {
 	private String catFournisseur ;
 	private String rib ;
 	
-	@ManyToOne
-	@JoinColumn(name = "idproduit", referencedColumnName = "id")
-	private Produit produite;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "produit_id",referencedColumnName = "id", nullable = false)
+	private Produit produits;
 	
 	public Long getId() {
 		return id;
