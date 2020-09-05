@@ -29,9 +29,6 @@ public class Fournisseur {
 	private String catFournisseur ;
 	private String rib ;
 	
-	@ManyToOne
-	@JoinColumn(name = "idproduit", referencedColumnName = "id")
-	private Produit produite;
 	
 	public Long getId() {
 		return id;
