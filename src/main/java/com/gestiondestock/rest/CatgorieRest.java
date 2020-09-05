@@ -35,7 +35,7 @@ public class CatgorieRest {
 	public List<Categorie> getAllCategorieDetails() {
 		return categorieService.getAllCategorieDetails();
 	}
-	@PostMapping("/ajoutercategorie")
+	/*@PostMapping("/ajoutercategorie")
 	public ResponseEntity<Categorie> AjouterCategorie(@RequestBody Categorie categorie) {
 		return categorieService.AjouterCategorie(categorie);
 	}
@@ -43,7 +43,7 @@ public class CatgorieRest {
 	@GetMapping("/{idProduit}")
 	public List<Categorie> getProduitCategorie(@PathVariable Long idProduit) {
 		return categorieService.getProduitCategorie(idProduit);
-	}
+	}*/
 	
 	
 	
