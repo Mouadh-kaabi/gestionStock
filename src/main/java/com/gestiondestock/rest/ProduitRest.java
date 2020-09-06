@@ -3,6 +3,7 @@ package com.gestiondestock.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,13 +26,15 @@ public class ProduitRest {
 	private ProduitService produitService ;
 	
 	
-	@PostMapping("/ajouter")
-	public Produit ajouterProduit(@RequestBody Produit p) {
-		return produitService.ajouterProduit(p);
-	}
+	
+	
 	@GetMapping("/allproduit")
 	public List<Produit> ListProduit() {
 		return produitService.ListProduit();
+	}
+	@PostMapping("/ajouter")
+	public ResponseEntity<Produit> ajouterProduit(@RequestBody Produit p) {
+		return produitService.ajouterProduit(p);
 	}
 	@GetMapping("/allproduit/{id}")
 	public Produit getProduit(@PathVariable Long id) {
