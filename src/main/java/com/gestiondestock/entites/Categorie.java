@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Categorie {
 
@@ -22,6 +24,7 @@ public class Categorie {
 	private String libelle;
 	
 	@OneToMany
+	@JsonBackReference
 	private List<Produit>produits ;
 
 	public Long getId() {

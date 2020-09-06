@@ -13,12 +13,5 @@ public class GestionDeStockApplication {
 		SpringApplication.run(GestionDeStockApplication.class, args);
 	}
 	
-	@Bean 
-	  BCryptPasswordEncoder getBCPE() { 
-		  
-		  return new BCryptPasswordEncoder(); 
-	  }
 	
-	@Autowired 
-	  private BCryptPasswordEncoder bCryptPasswordEncoder;
 }
