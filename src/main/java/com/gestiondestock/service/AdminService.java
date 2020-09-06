@@ -17,10 +17,13 @@ public class AdminService {
 	AdminRepository adminRepository;
 	@Autowired
 	RoleRopository roleRopository ;
+	@Autowired
+	CryptDAO cryptDAO;
 
 	public Admin inscrpition(Admin ad) {
 		Optional<com.gestiondestock.entites.Role> r = roleRopository.findByRoleName("admin");
 		ad.setRole(r.get());
+		ad.setPassword(cryptDAO.encryption(ad.getPassword()));
 		return adminRepository.save(ad);
 
 	}

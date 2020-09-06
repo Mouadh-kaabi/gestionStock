@@ -21,8 +21,8 @@ public class ProduitService {
 
 	public ResponseEntity<Produit> ajouterProduit(Produit p) {
 		
-			Categorie categorie = categorieRepository.save(p.getCategorie());
-			p.setCategorie(categorie);
+			//Categorie categorie = categorieRepository.save(p.getCategorie());
+			//p.setCategorie(categorie);
 			produitRepository.save(p);
 			return new ResponseEntity<Produit>(p, HttpStatus.OK);	
 		

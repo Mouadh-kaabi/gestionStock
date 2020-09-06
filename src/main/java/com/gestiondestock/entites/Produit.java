@@ -34,7 +34,7 @@ public class Produit {
 	
 	
 	@ManyToOne
-    @JoinColumn(name = "categorieId",referencedColumnName = "id")
+    @JoinColumn(name = "categorieId",referencedColumnName = "id",updatable = false)
 	private Categorie categorie;
 	
 	
