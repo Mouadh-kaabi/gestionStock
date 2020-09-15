@@ -51,8 +51,6 @@ public class Fournisseur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-	
 	public int getPhone() {
 		return phone;
 	}
@@ -87,7 +85,6 @@ public class Fournisseur {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
 	
 	public String getCatFournisseur() {
 		return catFournisseur;
