@@ -19,11 +19,14 @@ public class EmployeService {
 	EmployeRepository employeRepository;
 	@Autowired
 	RoleRopository roleRopository ;
+	@Autowired
+	CryptDAO cryptDAO;
 	
 
 	public Employe inscrpition(Employe e) {
 		Optional<com.gestiondestock.entites.Role> r = roleRopository.findByRoleName("employe");
 		e.setRole(r.get());
+		e.setPassword(cryptDAO.encryption(e.getPassword()));
 		return employeRepository.save(e);
 
 	}

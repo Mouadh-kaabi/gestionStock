@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.gestiondestock.entites.Produit;
+import com.gestiondestock.repository.CategorieRepository;
 import com.gestiondestock.repository.ProduitRepository;
 
 @Service
@@ -14,9 +16,19 @@ public class ProduitService {
 
 	@Autowired
 	private ProduitRepository produitRepository;
+	@Autowired 
+	private CategorieRepository categorieRepository ;
 
-	public Produit ajouterProduit(Produit p) {
-		return produitRepository.save(p);
+	public ResponseEntity<Produit> ajouterProduit(Produit p) {
+		
+			//Categorie categorie = categorieRepository.save(p.getCategorie());
+			//p.setCategorie(categorie);
+			produitRepository.save(p);
+			return new ResponseEntity<Produit>(p, HttpStatus.OK);	
+		
+		
+	
+	
 	}
 
 	// list des produits
