@@ -1,13 +1,14 @@
 package com.gestiondestock.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gestiondestock.entites.Admin;
+
 import com.gestiondestock.entites.Employe;
-import com.gestiondestock.repository.AdminRepository;
+
 import com.gestiondestock.repository.EmployeRepository;
 import com.gestiondestock.repository.RoleRopository;
 
@@ -25,6 +26,20 @@ public class EmployeService {
 		e.setRole(r.get());
 		return employeRepository.save(e);
 
+	}
+	public List<Employe> getAllEmployee() {
+		return employeRepository.findAll(); 
+	}
+	
+	public void deleteEmploye(Long id) {
+		Optional<Employe> e= employeRepository.findById(id);
+		 if(e.isPresent())
+		 {
+			employeRepository.deleteById(id); 
+		 }
+							
+		
+		
 	}
 
 }

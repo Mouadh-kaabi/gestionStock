@@ -1,9 +1,11 @@
 package com.gestiondestock.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.gestiondestock.entites.Produit;
 import com.gestiondestock.repository.ProduitRepository;
 
@@ -41,5 +43,14 @@ public class ProduitService {
 				}
 			}
 			return produit;
+		}
+		
+		
+		public void deleteProduit(Long id) {
+			Optional<Produit> e= produitRepository.findById(id);
+			 if(e.isPresent())
+			 {
+				produitRepository.deleteById(id); 
+			 }
 		}
 }

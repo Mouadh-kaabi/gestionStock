@@ -1,6 +1,7 @@
 package com.gestiondestock.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,22 @@ public class FournisseurService {
 			return null;
 
 		}
+	}
+	
+	public void deleteFournisseur(Long id) {
+		Optional<Fournisseur> e= fournisseurRepository.findById(id);
+		 if(e.isPresent())
+		 {
+			fournisseurRepository.deleteById(id); 
+		 }
+							
+		
+		
+	}
+	public Fournisseur getFournisseur(Long id) {
+
+		return fournisseurRepository.findById(id).get();
+
 	}
 	
 }
